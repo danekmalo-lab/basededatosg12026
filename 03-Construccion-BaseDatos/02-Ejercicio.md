@@ -1,0 +1,43 @@
+![Ejercicio 2]![alt text](image-1.png)
+
+CREATE DATABASE ControlAcademico;
+GO
+
+USE ControlAcademico;
+GO
+
+CREATE TABLE Profesor(
+IdProfesor INT IDENTITY(1,1) NOT NULL,
+nombre VARCHAR (20) NOT NULL,
+Apellido1 VARCHAR (20) NOT NULL,
+Apellido2 VARCHAR (20) NULL,
+CONSTRAINT PK_profesor PRIMARY KEY (IdProfesor)
+);
+GO
+
+CREATE TABLE Curso(
+IdCurso INT IDENTITY(1,1) NOT NULL,
+nombre VARCHAR(60) NOT NULL,
+creditos INT NOT NULL,
+IdProfesor INT NOT NULL,
+
+CONSTRAINT PK_Curso PRIMARY KEY (IdCurso),
+CONSTRAINT FK_Profe FOREIGN KEY (IdProfesor)
+REFERENCES Profesor(IdProfesor)
+ON DELETE CASCADE 
+ON UPDATE CASCADE
+);
+GO
+
+CREATE TABLE Especialidad(
+IDEspecialidad INT IDENTITY(1,1)NOT NULL,
+nombre VARCHAR(20) NOT NULL,
+IdProfesor INT NOT NULL,
+
+CONSTRAINT PK_Especialidad PRIMARY KEY (IDEspecialidad),
+CONSTRAINT FK_Profe FOREIGN KEY (IdProfesor)
+REFERENCES Profesor(IdProfesor)
+ON DELETE CASCADE
+ON UPDATE CASCADE
+);
+GO
