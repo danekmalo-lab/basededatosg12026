@@ -1,7 +1,6 @@
 /*------------------------------------------------------------------------
 ==========================================================================
 
-
 DQL (Data Query Lenguaje en SQLSERVER)
 
 Archivo 05-Create-DataBase.sql
@@ -105,5 +104,40 @@ SELECT
      (p.precio * p.existencia) AS precio_inventario     
 FROM productos AS P;
 
----TODO: Operdores aritmeticos
+- - TODO: Operdores Arimeticos y mas ejercicios de
+/* Campos calculados
+    + suma
+    - resta
+    * multiplicasion
+    / division
+    % modulo
+==================================*/
+
+-- Selecionar los empleados y calcular su salario anual
+SELECT 
+     e.id_empleado AS codigo_empleado,
+     e.nombre AS nombre_empleado,
+     e.salario AS salario_mensual,
+     (e.salario * 12) AS salario_anual
+
+FROM empleados AS e;
+GO
+
+-- Seleccionar el detalle de las ventas, mostrando 
+-- numero de venta, cantidad, precio, descuento
+-- Calcular el importe bruto (cantidad * precio)
+-- Calcular el importe con descuento (importe_bruto * descuento / 100)
+-- Calcular el importe neto, (importe bruto * 1 menos el descuento / 100)
+
+SELECT
+     dv.id.ventas AS #venta,
+     dv.cantidad AS cantidad_vendida,
+     dv.precio AS [precio de venta],
+     dv.descuento AS 'descuento de venta',
+     (dv.cantidad * dv.precio) AS importe_bruto,
+     (dv.cantidad * dv.precio / 100.0) AS importe_descuento
+     dv.cantidad * dv.precio * (1.0 - descuento / 100.0) AS importe_neto
+FROM detalle_ventas AS dv;
+GO
+
 
